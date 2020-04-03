@@ -74,7 +74,3 @@ def print_board(board):
             else:
                 print(str(board[i][j]) + " ", end="")
 
-
-print_board(easy_board)
-solve(easy_board)
-print_board(easy_board)
