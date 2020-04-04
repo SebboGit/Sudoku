@@ -1,5 +1,6 @@
 from solver import *
-from random import shuffle
+from random import shuffle, randint
+from copy import deepcopy
 
 
 empty_board = [[0 for i in range(9)] for j in range(9)]
@@ -33,5 +34,24 @@ def fill_board(board):
 
 
 fill_board(empty_board)
-print_board(empty_board)
 
+attempts = 20
+while attempts:
+    row = randint(0, 8)
+    col = randint(0, 8)
+    while empty_board[row][col] == 0:
+        row = randint(0, 8)
+        col = randint(0, 8)
+
+    backup = empty_board[row][col]
+    empty_board[row][col] = 0
+
+    copyBoard = deepcopy(empty_board)
+    if solve(copyBoard):
+        attempts -= 1
+    else:
+        empty_board[row][col] = 0
+        attempts -= 1
+
+
+print_board(empty_board)
