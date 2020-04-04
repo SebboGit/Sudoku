@@ -20,7 +20,6 @@ def solve(board):
     for i in range(1, 10):
         if valid(board, i, (row, col)):
             board[row][col] = i
-
             if solve(board):
                 return True
 
@@ -73,4 +72,3 @@ def print_board(board):
                 print(board[i][j])
             else:
                 print(str(board[i][j]) + " ", end="")
-
