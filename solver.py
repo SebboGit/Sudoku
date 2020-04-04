@@ -38,17 +38,17 @@ def empty_space(board):
 
 
 def valid(board, num, position):
-    # row
+    # check if number already in row
     for i in range(len(board[0])):
         if board[position[0]][i] == num and position[1] != i:
             return False
 
-    # column
+    # check if number already in column
     for i in range(len(board)):
         if board[i][position[1]] == num and position[0] != i:
             return False
 
-    # box
+    # check if number already in 3x3 box
     x_val = position[1] // 3
     y_val = position[0] // 3
 
