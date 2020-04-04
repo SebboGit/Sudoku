@@ -2,8 +2,7 @@ from solver import *
 from random import shuffle, randint
 from copy import deepcopy
 
-
-empty_board = [[0 for i in range(9)] for j in range(9)]
+sudoku = [[0 for i in range(9)] for j in range(9)]
 numbers = [i for i in range(1, 10)]
 
 
@@ -33,25 +32,37 @@ def fill_board(board):
     board[row][col] = 0
 
 
-fill_board(empty_board)
+def remove_nums(difficulty):
+    if difficulty == "expert":
+        attempts = 60
+    elif difficulty == "medium":
+        attempts = 50
+    else:
+        attempts = 40
 
-attempts = 20
-while attempts:
-    row = randint(0, 8)
-    col = randint(0, 8)
-    while empty_board[row][col] == 0:
+    fill_board(sudoku)
+
+    while attempts:
         row = randint(0, 8)
         col = randint(0, 8)
+        if sudoku[row][col] == 0:
+            row = randint(0, 8)
+            col = randint(0, 8)
 
-    backup = empty_board[row][col]
-    empty_board[row][col] = 0
+        backup = sudoku[row][col]
+        sudoku[row][col] = 0
 
-    copyBoard = deepcopy(empty_board)
-    if solve(copyBoard):
-        attempts -= 1
-    else:
-        empty_board[row][col] = 0
-        attempts -= 1
+        copyBoard = deepcopy(sudoku)
+        if solve(copyBoard):
+            attempts -= 1
+        else:
+            sudoku[row][col] = backup
+            attempts -= 1
+
+    return sudoku
 
 
-print_board(empty_board)
+remove_nums("expert")
+
+print_board(sudoku)
+
