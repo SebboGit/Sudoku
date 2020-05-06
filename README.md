@@ -8,7 +8,7 @@ First project trying out GitHub
 
 **2.** Randomily removes given amount of numbers from the board
     
-    > "easy" | "medium | "expert"
+     "easy" | "medium | "expert" 
     
 **3.** Sudoku can be solved on the graphical user interface
 
@@ -18,8 +18,7 @@ First project trying out GitHub
 ### Requirements
 The GUI is made with the pygame modul
 
-`pip install pygame`
-`python3 GUI.py`
+`python GUI.py` to start
 
 
 
